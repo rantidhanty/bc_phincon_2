@@ -4,9 +4,114 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phincon Academy</title>
-    <h1>welcome</h1>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <h1>welcome</h1>
+    <table id="table-bootcamp" border="1">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>reza</td>
+                <td>Male</td>
+                <td>0899999</td>
+                <td>xxxx</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>ramadhanty</td>
+                <td>Female</td>
+                <td>0899999</td>
+                <td>rantidhanty@gmail.com</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>reza</td>
+                <td>Male</td>
+                <td>0899999</td>
+                <td>xxxx</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table id="data-bootcamp" border="1">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Class Name</th>
+                <th>Instructur Name</th>
+                <th>Class Code</th>
+                <th>Student Qty</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Fullstack Developer</td>
+                <td>Sigit</td>
+                <td>FSJS</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Android Kotlin</td>
+                <td>Haidar</td>
+                <td>And</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>IOS Swift</td>
+                <td>Kholis</td>
+                <td>IOS</td>
+                <td>1</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <script src="script.js"></script> -->
+    <script>
+        let table = document.getElementById("data-bootcamp");
+
+        function addRowAdjacentHTML(no, className, InstructurName, classCode, StudentQTY){
+            table.insertAdjacentHTML(
+                "beforeend",
+                `<tr>
+                    <td>${no}</td>
+                    <td>${className}</td>
+                    <td>${InstructurName}</td>
+                    <td>${classCode}</td>
+                    <td>${StudentQTY}</td>
+                `
+            )
+        }
+        addRowAdjacentHTML(5, "data scient", "Lita", "DS", 5);
+        addRowAdjacentHTML(6, "Devops", "Muto", "DEVOPS", 10);
+
+        function addRowInsertCell(no, className, InstructurName, classCode, StudentQTY){
+
+            let row = table.insertRow();
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+            let cell4 = row.insertCell(3);
+            let cell5 = row.insertCell(4);
+
+            cell1.textContent = no;
+            cell2.textContent = className;
+            cell3.textContent = InstructurName;
+            cell4.textContent = classCode;
+            cell5.textContent = StudentQTY;
+        }
+        addRowInsertCell(7, "FullstackJS", "Dhanty", "fsjs", "5");
+    </script>
 </body>
 </html>
