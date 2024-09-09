@@ -1,0 +1,11 @@
+h1{
+    color: red;
+}
+#table-bootcamp td{
+    width: 500px;
+}
+
+/* cara untuk lebih spesifik elemennya, di tulis 5 karena elemen ke 5 yang akan di style */
+#table-bootcamp td:nth-last-child(5){
+    width: 500px;
+}
