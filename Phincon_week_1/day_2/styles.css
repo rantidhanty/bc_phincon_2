@@ -1,0 +1,80 @@
+/* CSS Lampu */
+/* body{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#power{
+    margin-top: 20px;
+} */
+
+body {
+    background-color: #aad4fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+h1{
+    color: #0372ce;
+}
+#hasilR th{
+    padding: 20px;
+}
+.container {
+    width: 100%;
+    width: 60%;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+header .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
+header .logo {
+    width: 100px;
+    height: auto;
+}
+
+h1{
+    color: #0372ce;
+    font-size: 24px;
+    margin: 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label, input, select{
+    /* width: 100%; */
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+}
+input{
+    border-radius: 5px;
+}
+select{
+    border-radius: 5px;
+    border-width: 2px;
+}
+
+button {
+    background-color: #0372ce;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #025a9b;
+}
