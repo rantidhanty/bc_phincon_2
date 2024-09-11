@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_registrasi_phincon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <img src="logo-phincon-academy.png" alt="logo_phincon">
+                <h1>Registrasi Form</h1>
+            </div>
+        </header>
+        <form id="registrasion-form" required>
+            <div class="container">
+                <label for="name" class="1">Nama Siswa</label>
+                    <div>
+                        <input type="text" id="Name">
+                    </div>
+            </div>
+            <div class="grid-container">
+                <label for="kelas" class="1">Kelas</label>
+                    <div>
+                        <input type="text" id="class">
+                    </div>
+            </div>
+            <div>
+                <label for="jk">Jenis kelamin</label>
+                <input id="genderM" type="radio" name="gender" value="laki-laki" >Laki-laki
+                <input id="genderL" type="radio" name="gender" value="perempuan">Perempuan
+            </div>
+
+            <div>
+                <label for="date" class="1">Tanggal Lahir</label><br>
+                <input type="date" id="birthday"><br><br>
+            </div>
+            
+    
+            <label for="education" id="edu" class="1">Pendidikan Terakhir</label><br>
+            <select id="pdd">
+                <option value=""></option>
+                <option value="SMA">SMA</option>
+                <option value="SMK">SMK</option>
+                <option value="D3">D3</option>
+                <option value="S1">S1</option>
+                <option value="S2">S2</option>
+            </select> <br><br>
+    
+            <label for="jurusan" id="jrs">Jurusan</label><br>
+            <input type="text" id="jrss"><br><br>
+
+            <button type="submit" id="submit">Submit</button>
+        </form>
+        <hr>
+        <div id="result">
+            <table id="hasilR" border="1">
+                <thead>
+                    <tr>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>Jenis Kelamin</th>
+                        <th>Tanggal Lahir</th>
+                        <th>Pendidikan Terakhir</th>
+                        <th>Jurusan</th>
+                    </tr>
+                </thead>
+                <tbody id="hasil2">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div><br>
+    
+    <script src="tugas_3.js"></script>
+</body>
+</html>
