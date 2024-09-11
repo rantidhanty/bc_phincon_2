@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mentoring day 3</title>
+</head>
+<body>
+    
+    <script>
+        const identitasOrang = [
+  {
+    nama: "Andi Pratama",
+    umur: 30,
+    alamat: "Jl. Merdeka No. 1, Jakarta",
+    pekerjaan: "Programmer"
+  },
+  {
+    nama: "Budi Santoso",
+    umur: 25,
+    alamat: "Jl. Sudirman No. 2, Bandung",
+    pekerjaan: "Desainer Grafis"
+  },
+  {
+    nama: "Citra Dewi",
+    umur: 28,
+    alamat: "Jl. Gatot Subroto No. 3, Surabaya",
+    pekerjaan: "Marketing"
+  },
+  {
+    nama: "Dewi Anggraini",
+    umur: 32,
+    alamat: "Jl. Diponegoro No. 4, Yogyakarta",
+    pekerjaan: "Dokter"
+  },
+  {
+    nama: "Eko Saputra",
+    umur: 35,
+    alamat: "Jl. Pahlawan No. 5, Semarang",
+    pekerjaan: "Pengacara"
+  }
+];
+identitasOrang.forEach((data) => {
+    // console.log(data);//pemanggilan parameter dan property alamat
+    if(data.nama == "Dewi Anggraini"){//== membandingan 2 value tanpa mempertimngkan type data
+        console.log(data); // === membandingkan type data dan value
+        //= memberikan nilai
+    }
+})
+// identitasOrang.pop(4)
+// console.log(identitasOrang)
+    </script>
+</body>
+</html>
