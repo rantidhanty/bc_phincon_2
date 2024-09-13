@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoring Day 4</title>
+    <style>
+        .div-4{ /* overlead styling */
+            height: 30px;
+        }
+        div{
+            border: 2px solid black;
+            margin: 10px;
+            height: 50px;
+            text-align: center;
+        }
+        .div-2{
+            background-color: black;
+            color: white;
+        }
+        .div-3{
+            font-style: italic;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <!-- name untuk mengambil data, lebih dari 1, contoh di radio button-->
+    <div class="div-1" name="div-container">header 1</div>
+    <div class="div-2" name="div-container">header 2</div>
+    <div class="div-3" name="div-container">header 3</div>
+    <div class="div-4" name="div-container">header 4</div>
+    <div class="div-5" name="div-container">header 5</div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus iste aperiam repellendus repellat error, dolorum pariatur facilis quaerat! Ex, corrupti necessitatibus voluptas recusandae accusamus fugiat repellat distinctio similique modi sunt.
+    Sint distinctio debitis rerum voluptate optio voluptatem quos odio saepe quisquam nam voluptatibus, animi hic possimus aut vitae perspiciatis aperiam quam, impedit ipsam et maiores provident. Dolor omnis provident qui.
+    Recusandae mollitia id placeat sit laboriosam praesentium! Asperiores minus suscipit sunt ad, dolore, consequatur, neque blanditiis ipsa nobis recusandae sit. Provident beatae nostrum delectus consequuntur cumque. Quibusdam voluptates saepe vitae!
+    Ipsa provident exercitationem in quod, ea reiciendis voluptatibus rem minima magnam ratione quidem alias accusamus, vero corrupti. Quis, soluta at rerum quaerat deleniti quibusdam, veniam hic, quidem inventore accusamus porro.
+    Suscipit doloremque soluta temporibus fuga magnam dolorum autem corporis nulla. Ut magni harum in a quod obcaecati odio illum corrupti libero dolorum modi ullam deleniti tempora, debitis, esse vitae repellat?
+    Voluptatem saepe nam, rem quibusdam et eveniet possimus accusamus dolor at sint consectetur tempore! Nobis, expedita, fugit quae officiis provident amet nam corporis blanditiis suscipit asperiores doloremque non ipsa obcaecati!
+    Velit ad, sapiente ipsa non sint corrupti rem deleniti suscipit placeat incidunt, est, magnam nihil porro explicabo magni debitis quis dolorum? Odio necessitatibus itaque esse voluptatum corporis sed consectetur officia?
+    Placeat sunt at cupiditate id et earum, corrupti mollitia maxime consectetur ipsum non, facere beatae excepturi asperiores fugiat deleniti. Veritatis dicta nam quisquam dolor hic amet! Voluptatem repudiandae dolores excepturi!
+    Nemo impedit laboriosam quidem reprehenderit non et, libero error consequatur doloribus enim, iste mollitia, nisi officiis. Quaerat quidem adipisci at ea aut ipsa illo non, corporis accusantium alias natus cupiditate.
+    Eligendi esse voluptate harum, reprehenderit sunt exercitationem asperiores in magnam reiciendis totam nemo est aspernatur, quibusdam minus, rem fugit architecto quia! Commodi, placeat. Cumque deleniti quam perferendis libero iusto quos.</p>
+</body>
+<script>
+    //best pratice akses cara index 0, [], because classname output array lebih dari 1
+    const div5 = document.getElementsByClassName("div-5")[0];
+    console.log(div5)
+    const divC = document.getElementsByName("div-container")[1];
+    console.log(divC)
+    const lorem = document.getElementsByTagName("p")[0];
+    console.log(lorem)
+    //menggabungkan kata
+    console.log(document.getElementsByClassName("div-3")[0].innerHTML)
+    document.getElementsByClassName("div-3")[0].innerHTML = document.getElementsByClassName("div-3")[0].innerHTML + "b";
+    let c = "a123";
+    console.log(c)
+    //assign karakter baru
+    c = c + 456;
+    console.log(c)
+    c = c +78910;
+    console.log(c)
+    c += 111213
+    console.log(c)
+
+    // kalau tanpa "" jadi variabel
+    const ar = ["a", "b", "c", [1, 2,]]
+    // console.log(ar.length);
+    // console.log(ar[3][1])
+    ar.forEach((element) => console.log(element));
+
+    let a = "b"
+    function bilanganGanjil(angka1, angka2){
+        for(let i = angka1; i <= angka2; i++){
+            console.log(i + a);
+            
+        }
+        
+    }
+    bilanganGanjil(10, 50)
+</script>
+</html>

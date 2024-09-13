@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Calculator</title>
+    <style>
+        .header, .input{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header{
+            gap: 300px;
+            margin-top: 100px;
+        }
+        .head{
+            font-size: 15px;
+        }
+        .column{
+            margin: 10px;
+        }
+        .input {
+            margin: 10px;
+        }
+        .number{
+            background-color: rgb(17, 16, 16);
+            width: 32%;
+            height: 70px;
+            border-radius: 10px;
+            color: aliceblue;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 30%;
+            margin: auto;
+            transition: box-shadow 0.3s ease;
+        }
+        .grid-container{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: red;
+            width: 100%;
+        }
+        .grid-item{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 60px;
+        }
+        .grid-item2{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            background-color: hsl(6, 63%, 50%);
+            border-radius: 5px;
+            font-size: 1.5em;
+        }
+        button:hover{
+            cursor: pointer;
+            transform: scale(1.2);
+            background-color: #fe5bac;
+        }
+        input:hover{
+            cursor: pointer;
+            transform: scale(0.5.1);
+            background-color: #bd066b;
+            box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+    </style>
+</head>
+<body id="background-body">
+    <div class="header">
+        <div class="head"><h2>Calc</h2></div>
+        <div class="head"><h2>Theme</h2></div>
+    </div>
+    <div class="column">
+        <div class="input">
+            <input type="text" name="number" id="num" class="number" value="" dir="rtl" readonly>
+        </div>
+    </div>
+    <div class="container">
+        <div class="grid-container">
+            <button onclick="result(7)" id="7" class="grid-item">7</button>
+            <button onclick="result(8)" id="8" class="grid-item">8</button>
+            <button onclick="result(9)" id="9" class="grid-item">9</button>
+            <button onclick="del()" id="del" class="grid-item">DEL</button>
+            <button onclick="result(4)" id="4" class="grid-item">4</button>
+            <button onclick="result(5)" id="5" class="grid-item">5</button>
+            <button onclick="result(6)" id="6" class="grid-item">6</button>
+            <button onclick="result('+')" id="+" class="grid-item">+</button>
+            <button onclick="result(1)" id="1" class="grid-item">1</button>
+            <button onclick="result(2)" id="2" class="grid-item">2</button>
+            <button onclick="result(3)" id="3" class="grid-item">3</button>
+            <button onclick="result('-')" id="-" class="grid-item">-</button>
+            <button onclick="result('.')" id="." class="grid-item">.</button>
+            <button onclick="result(0)" id="0" class="grid-item">0</button>
+            <button onclick="result('/')" id="/" class="grid-item">/</button>
+            <button onclick="result('x')" id="X" class="grid-item">X</button>
+            <button onclick="resetCalc()" class="grid-item2" style="grid-column: 1/span 2;">reset</button>
+            <button onclick="calculate()" class="grid-item2" style="grid-column: 3/span 2;">=</button>
+        </div>
+    </div>
+    <script>
+        const themes = [
+            {
+                name: "theme1",
+                background:{
+                    main: "hsl(222, 26%, 31%)",
+                    toggle: "hsl(223, 31%, 20%)",
+                    screen: "hsl(224, 36%, 15%)",
+                },
+                keys:{
+                    default:{
+                        background: "hsl(225, 21%, 49%)",
+                        shadow: "hsl(224, 28%, 35%)",
+                    },
+                    red:{
+                        background: "hsl(6, 63%, 50%)",
+                        shadow: "hsl(6, 70%, 34%)",
+                    },
+                    orange:{
+                        background: "hsl(30, 25%, 89%)",
+                        shadow: "hsl(28, 16%, 65%)",
+                    },
+                },
+                text:{
+                    dark: "hsl(221, 14%, 31%)",
+                    white: "hsl(0, 0%, 100%)",
+                }
+            },
+            {
+                name: "theme2",
+                background:{
+                    main: "hsl(0, 0%, 90%)",
+                    toggle: "hsl(0, 5%, 81%)",
+                    screen: "hsl(0, 0%, 93%)",
+                },
+                keys:{
+                    default:{
+                        background: "hsl(185, 42%, 37%)",
+                        shadow: "hsl(185, 58%, 25%)",
+                    },
+                    orange:{
+                        background: "hsl(25, 98%, 40%)",
+                        shadow: "hsl(25, 99%, 27%)",
+                    },
+                    yellow:{
+                        background: "hsl(45, 7%, 89%)",
+                        shadow: "hsl(35, 11%, 61%)",
+                    },
+                },
+                text:{
+                        dark: "hsl(60, 10%, 19%)",
+                        white: "hsl(0, 0%, 100%)",
+                    }
+            },
+            {
+                name: "theme3",
+                background:{
+                    main: "hsl(268, 75%, 9%)",
+                    toggle: "hsl(268, 71%, 12%)",
+                },
+                keys:{
+                    default:{
+                        background: "hsl(281, 89%, 26%)",
+                        shadow: "hsl(285, 91%, 52%)",
+                    },
+                    cyan:{
+                        background: "hsl(176, 100%, 44%)",
+                        shadow: "hsl(177, 92%, 70%)",
+                    },
+                    dark:{
+                        background: "hsl(268, 47%, 21%)",
+                        shadow: "hsl(290, 70%, 36%)",
+                    },
+                },
+                text:{
+                    ligh: "hsl(52, 100%, 62%)",
+                    very: "hsl(198, 20%, 13%)",
+                    while: "hsl(0, 0%, 100%)",
+                }
+            },
+        ];
+        let backgroundBody = document.getElementById("background-body");
+        backgroundBody.style.background = themes[0].background.main;
+        let gridContainer = document.querySelector(".grid-container");
+        gridContainer.style.backgroundColor = themes[0].background.screen;
+
+        const display = document.getElementById("num");
+        function result(value){
+            display.value += value
+        }
+        function calculate(){
+            try {
+                display.value = eval(display.value.replace('x', '*'));
+            }catch{
+                display.value = "Error";
+            }
+        }
+        function resetCalc(){
+            display.value = "";
+        }
+        function del(){
+            display.value = display.value.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
