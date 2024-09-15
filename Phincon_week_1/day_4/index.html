@@ -3,217 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercise Calculator</title>
+    <title>Calculator App</title>
     <style>
-        .header, .input{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .header{
-            gap: 300px;
-            margin-top: 100px;
-        }
-        .head{
-            font-size: 15px;
-        }
-        .column{
-            margin: 10px;
-        }
-        .input {
-            margin: 10px;
-        }
-        .number{
-            background-color: rgb(17, 16, 16);
-            width: 32%;
-            height: 70px;
-            border-radius: 10px;
-            color: aliceblue;
-        }
-        .container{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 30%;
-            margin: auto;
-            transition: box-shadow 0.3s ease;
-        }
-        .grid-container{
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(3, 1fr);
-            gap: 10px;
-            padding: 10px;
-            border-radius: 10px;
-            background-color: red;
-            width: 100%;
-        }
-        .grid-item{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 60px;
-        }
-        .grid-item2{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            background-color: hsl(6, 63%, 50%);
-            border-radius: 5px;
-            font-size: 1.5em;
-        }
-        button:hover{
-            cursor: pointer;
-            transform: scale(1.2);
-            background-color: #fe5bac;
-        }
-        input:hover{
-            cursor: pointer;
-            transform: scale(0.5.1);
-            background-color: #bd066b;
-            box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
-        }
-        
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: hsl(0, 0%, 90%);
+        font-family: Arial, sans-serif;
+    }
+    .calc{
+        margin-bottom: -30px;
+        margin-left: -23%;
+        font-size: 30px;
+    }
+    .theme-switcher {
+        text-align: center;
+        margin-bottom: 10px;
+        margin-left: 300px;
+    }
+    .calculator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+    }
+    .screen {
+        margin-bottom: 10px;
+    }
+    #display {
+        width: 100%;
+        padding: 15px;
+        font-size: 2rem;
+        text-align: right;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        width: 28%;
+    }
+    .key {
+        padding: 10px;
+        font-size: 1.5rem;
+        border: none;
+        cursor: pointer;
+        background-color: hsl(225, 21%, 49%);
+        color: white;
+    }
+    .key:hover{
+        transform: scale(0.5.1);
+        background-color: #572c61;
+        box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+    }
+    .key.equal {
+        background-color: hsl(6, 63%, 50%);
+        box-shadow: 0 5px hsl(6, 70%, 34%);
+    }
+    .key.key.equal:hover{
+        transform: scale(0.5.1);
+        background-color: #572c61;
+        box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+    }
+    .key.fnkeys {
+        background-color: hsl(154, 42%, 43%);
+        box-shadow: 0 2px white
+    }
+    .keys .key.equal {
+        grid-column: span 2;
+    }
     </style>
 </head>
-<body id="background-body">
-    <div class="header">
-        <div class="head"><h2>Calc</h2></div>
-        <div class="head"><h2>Theme</h2></div>
+<body>
+    <div class="calc">Calc</div>
+    <div class="theme-switcher">
+        <div>Theme</div>
+        <label>
+            <input type="radio" name="theme" value="theme1" checked>
+            1
+        </label>
+        <label>
+            <input type="radio" name="theme" value="theme2">
+            2
+        </label>
+        <label>
+            <input type="radio" name="theme" value="theme3">
+            3
+        </label>
     </div>
-    <div class="column">
-        <div class="input">
-            <input type="text" name="number" id="num" class="number" value="" dir="rtl" readonly>
+    <div class="calculator"></div>
+        <div class="screen">
+            <form id="calcForm">
+                <input type="text" id="display" readonly>
+            </form>
         </div>
-    </div>
-    <div class="container">
-        <div class="grid-container">
-            <button onclick="result(7)" id="7" class="grid-item">7</button>
-            <button onclick="result(8)" id="8" class="grid-item">8</button>
-            <button onclick="result(9)" id="9" class="grid-item">9</button>
-            <button onclick="del()" id="del" class="grid-item">DEL</button>
-            <button onclick="result(4)" id="4" class="grid-item">4</button>
-            <button onclick="result(5)" id="5" class="grid-item">5</button>
-            <button onclick="result(6)" id="6" class="grid-item">6</button>
-            <button onclick="result('+')" id="+" class="grid-item">+</button>
-            <button onclick="result(1)" id="1" class="grid-item">1</button>
-            <button onclick="result(2)" id="2" class="grid-item">2</button>
-            <button onclick="result(3)" id="3" class="grid-item">3</button>
-            <button onclick="result('-')" id="-" class="grid-item">-</button>
-            <button onclick="result('.')" id="." class="grid-item">.</button>
-            <button onclick="result(0)" id="0" class="grid-item">0</button>
-            <button onclick="result('/')" id="/" class="grid-item">/</button>
-            <button onclick="result('x')" id="X" class="grid-item">X</button>
-            <button onclick="resetCalc()" class="grid-item2" style="grid-column: 1/span 2;">reset</button>
-            <button onclick="calculate()" class="grid-item2" style="grid-column: 3/span 2;">=</button>
-        </div>
-    </div>
-    <script>
-        const themes = [
-            {
-                name: "theme1",
-                background:{
-                    main: "hsl(222, 26%, 31%)",
-                    toggle: "hsl(223, 31%, 20%)",
-                    screen: "hsl(224, 36%, 15%)",
-                },
-                keys:{
-                    default:{
-                        background: "hsl(225, 21%, 49%)",
-                        shadow: "hsl(224, 28%, 35%)",
-                    },
-                    red:{
-                        background: "hsl(6, 63%, 50%)",
-                        shadow: "hsl(6, 70%, 34%)",
-                    },
-                    orange:{
-                        background: "hsl(30, 25%, 89%)",
-                        shadow: "hsl(28, 16%, 65%)",
-                    },
-                },
-                text:{
-                    dark: "hsl(221, 14%, 31%)",
-                    white: "hsl(0, 0%, 100%)",
-                }
-            },
-            {
-                name: "theme2",
-                background:{
-                    main: "hsl(0, 0%, 90%)",
-                    toggle: "hsl(0, 5%, 81%)",
-                    screen: "hsl(0, 0%, 93%)",
-                },
-                keys:{
-                    default:{
-                        background: "hsl(185, 42%, 37%)",
-                        shadow: "hsl(185, 58%, 25%)",
-                    },
-                    orange:{
-                        background: "hsl(25, 98%, 40%)",
-                        shadow: "hsl(25, 99%, 27%)",
-                    },
-                    yellow:{
-                        background: "hsl(45, 7%, 89%)",
-                        shadow: "hsl(35, 11%, 61%)",
-                    },
-                },
-                text:{
-                        dark: "hsl(60, 10%, 19%)",
-                        white: "hsl(0, 0%, 100%)",
-                    }
-            },
-            {
-                name: "theme3",
-                background:{
-                    main: "hsl(268, 75%, 9%)",
-                    toggle: "hsl(268, 71%, 12%)",
-                },
-                keys:{
-                    default:{
-                        background: "hsl(281, 89%, 26%)",
-                        shadow: "hsl(285, 91%, 52%)",
-                    },
-                    cyan:{
-                        background: "hsl(176, 100%, 44%)",
-                        shadow: "hsl(177, 92%, 70%)",
-                    },
-                    dark:{
-                        background: "hsl(268, 47%, 21%)",
-                        shadow: "hsl(290, 70%, 36%)",
-                    },
-                },
-                text:{
-                    ligh: "hsl(52, 100%, 62%)",
-                    very: "hsl(198, 20%, 13%)",
-                    while: "hsl(0, 0%, 100%)",
-                }
-            },
-        ];
-        let backgroundBody = document.getElementById("background-body");
-        backgroundBody.style.background = themes[0].background.main;
-        let gridContainer = document.querySelector(".grid-container");
-        gridContainer.style.backgroundColor = themes[0].background.screen;
+        <div class="keys">
+            <input type="button" class="key" value="7" onclick="document.getElementById('display').value += '7'">
+            <input type="button" class="key" value="8" onclick="document.getElementById('display').value += '8'">
+            <input type="button" class="key" value="9" onclick="document.getElementById('display').value += '9'">
+            <input type="button" class="key fnkeys" value="DEL" onclick="document.getElementById('display').value = document.getElementById('display').value.slice(0, -1)">
 
-        const display = document.getElementById("num");
-        function result(value){
-            display.value += value
-        }
-        function calculate(){
-            try {
-                display.value = eval(display.value.replace('x', '*'));
-            }catch{
-                display.value = "Error";
-            }
-        }
-        function resetCalc(){
-            display.value = "";
-        }
-        function del(){
-            display.value = display.value.slice(0, -1);
-        }
-    </script>
+            <input type="button" class="key" value="4" onclick="document.getElementById('display').value += '4'">
+            <input type="button" class="key" value="5" onclick="document.getElementById('display').value += '5'">
+            <input type="button" class="key" value="6" onclick="document.getElementById('display').value += '6'">
+            <input type="button" class="key" value="+" onclick="document.getElementById('display').value += '+'">
+
+            <input type="button" class="key" value="1" onclick="document.getElementById('display').value += '1'">
+            <input type="button" class="key" value="2" onclick="document.getElementById('display').value += '2'">
+            <input type="button" class="key" value="3" onclick="document.getElementById('display').value += '3'">
+            <input type="button" class="key" value="-" onclick="document.getElementById('display').value += '-'">
+
+            <input type="button" class="key" value="." onclick="document.getElementById('display').value += '.'">
+            <input type="button" class="key" value="0" onclick="document.getElementById('display').value += '0'">
+            <input type="button" class="key" value="/" onclick="document.getElementById('display').value += '/'">
+            <input type="button" class="key" value="x" onclick="document.getElementById('display').value += '*'">
+
+            <input type="button" class="key fnkeys" value="RESET" style="grid-column: 1/span 2;" onclick="document.getElementById('display').value = ''">
+            <input type="button" class="key equal" value="=" onclick="document.getElementById('display').value = eval(document.getElementById('display').value)">
+        </div>
+    </div>
 </body>
+<script>
+    const themes = [
+    {
+        name: "theme1",
+        background:{
+            main: "hsl(222, 26%, 31%)",
+            toggle: "hsl(223, 31%, 20%)",
+            screen: "hsl(224, 36%, 15%)",
+        },
+        keys:{
+            default:{
+                background: "hsl(225, 21%, 49%)",
+                shadow: "hsl(224, 28%, 35%)",
+            },
+            red:{
+                background: "hsl(6, 63%, 50%)",
+                shadow: "hsl(6, 70%, 34%)",
+            },
+            orange:{
+                background: "hsl(30, 25%, 89%)",
+                shadow: "hsl(28, 16%, 65%)",
+            },
+        },
+        text:{
+            dark: "hsl(221, 14%, 31%)",
+            white: "hsl(0, 0%, 100%)",
+        }
+    },
+    {
+        name: "theme2",
+        background:{
+            main: "hsl(0, 0%, 90%)",
+            toggle: "hsl(0, 5%, 81%)",
+            screen: "hsl(0, 0%, 93%)",
+        },
+        keys:{
+            default:{
+                background: "hsl(185, 42%, 37%)",
+                shadow: "hsl(185, 58%, 25%)",
+            },
+            orange:{
+                background: "hsl(25, 98%, 40%)",
+                shadow: "hsl(25, 99%, 27%)",
+            },
+            yellow:{
+                background: "hsl(45, 7%, 89%)",
+                shadow: "hsl(35, 11%, 61%)",
+            },
+        },
+        text:{
+            dark: "hsl(60, 10%, 19%)",
+            white: "hsl(0, 0%, 100%)",
+        }
+    },
+    {
+        name: "theme3",
+        background:{
+            main: "hsl(268, 75%, 9%)",
+            toggle: "hsl(268, 71%, 12%)",
+        },
+        keys:{
+            default:{
+                background: "hsl(281, 89%, 26%)",
+                shadow: "hsl(285, 91%, 52%)",
+            },
+            cyan:{
+                background: "hsl(176, 100%, 44%)",
+                shadow: "hsl(177, 92%, 70%)",
+            },
+            dark:{
+                background: "hsl(268, 47%, 21%)",
+                shadow: "hsl(290, 70%, 36%)",
+            },
+        },
+        text:{
+            light: "hsl(52, 100%, 62%)",
+            very: "hsl(198, 20%, 13%)",
+            white: "hsl(0, 0%, 100%)",
+        }
+    }
+];
+function applyTheme(theme) {
+    document.body.style.backgroundColor = theme.background.main;
+    document.querySelector('.toggle').style.backgroundColor = theme.background.toggle;
+    document.querySelector('.screen').style.backgroundColor = theme.background.screen;
+
+    document.querySelectorAll('.key.default').forEach(key => {
+        key.style.backgroundColor = theme.keys.default.background;
+        key.style.boxShadow = `0 5px ${theme.keys.default.shadow}`;
+    });
+
+    document.querySelectorAll('.key.red').forEach(key => {
+        key.style.backgroundColor = theme.keys.red?.background;
+        key.style.boxShadow = `0 5px ${theme.keys.red?.shadow}`;
+    });
+    document.querySelectorAll('.key.orange').forEach(key => {
+        key.style.backgroundColor = theme.keys.orange?.background;
+        key.style.boxShadow = `0 5px ${theme.keys.orange?.shadow}`;
+    });
+
+    document.body.style.color = theme.text.white;
+}
+document.querySelectorAll('input[name="theme"]').forEach(input => {
+    input.addEventListener('change', function() {
+        const selectedTheme = themes.find(theme => theme.name === this.value);
+        if (selectedTheme) {
+            applyTheme(selectedTheme);
+        }
+    });
+});
+applyTheme(themes[0]);
+</script>
 </html>
