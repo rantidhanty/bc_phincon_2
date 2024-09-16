@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator App</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background-color: hsl(0, 0%, 90%);
+        font-family: Arial, sans-serif;
+    }
+    .calc{
+        margin-bottom: -30px;
+        margin-left: -23%;
+        font-size: 30px;
+    }
+    .theme-switcher {
+        text-align: center;
+        margin-bottom: 10px;
+        margin-left: 300px;
+    }
+    .calculator {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 300px;
+    }
+    .screen {
+        margin-bottom: 10px;
+    }
+    #display {
+        width: 100%;
+        padding: 15px;
+        font-size: 2rem;
+        text-align: right;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .keys {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        width: 28%;
+    }
+    .key {
+        padding: 10px;
+        font-size: 1.5rem;
+        border: none;
+        cursor: pointer;
+        background-color: hsl(225, 21%, 49%);
+        color: white;
+    }
+    .key:hover{
+        transform: scale(0.5.1);
+        background-color: #572c61;
+        box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+    }
+    .key.equal {
+        background-color: hsl(6, 63%, 50%);
+        box-shadow: 0 5px hsl(6, 70%, 34%);
+    }
+    .key.key.equal:hover{
+        transform: scale(0.5.1);
+        background-color: #572c61;
+        box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+    }
+    .key.fnkeys {
+        background-color: hsl(154, 42%, 43%);
+        box-shadow: 0 2px white
+    }
+    .keys .key.equal {
+        grid-column: span 2;
+    }
+    </style>
+</head>
+<body>
+    <div class="calc">Calc</div>
+    <div class="theme-switcher">
+        <div>Theme</div>
+        <label>
+            <input type="radio" name="theme" value="theme1" checked>
+            1
+        </label>
+        <label>
+            <input type="radio" name="theme" value="theme2">
+            2
+        </label>
+        <label>
+            <input type="radio" name="theme" value="theme3">
+            3
+        </label>
+    </div>
+    <div class="calculator"></div>
+        <div class="screen">
+            <form id="calcForm">
+                <input type="text" id="display" readonly>
+            </form>
+        </div>
+        <div class="keys">
+            <input type="button" class="key" value="7" onclick="document.getElementById('display').value += '7'">
+            <input type="button" class="key" value="8" onclick="document.getElementById('display').value += '8'">
+            <input type="button" class="key" value="9" onclick="document.getElementById('display').value += '9'">
+            <input type="button" class="key fnkeys" value="DEL" onclick="document.getElementById('display').value = document.getElementById('display').value.slice(0, -1)">
+
+            <input type="button" class="key" value="4" onclick="document.getElementById('display').value += '4'">
+            <input type="button" class="key" value="5" onclick="document.getElementById('display').value += '5'">
+            <input type="button" class="key" value="6" onclick="document.getElementById('display').value += '6'">
+            <input type="button" class="key" value="+" onclick="document.getElementById('display').value += '+'">
+
+            <input type="button" class="key" value="1" onclick="document.getElementById('display').value += '1'">
+            <input type="button" class="key" value="2" onclick="document.getElementById('display').value += '2'">
+            <input type="button" class="key" value="3" onclick="document.getElementById('display').value += '3'">
+            <input type="button" class="key" value="-" onclick="document.getElementById('display').value += '-'">
+
+            <input type="button" class="key" value="." onclick="document.getElementById('display').value += '.'">
+            <input type="button" class="key" value="0" onclick="document.getElementById('display').value += '0'">
+            <input type="button" class="key" value="/" onclick="document.getElementById('display').value += '/'">
+            <input type="button" class="key" value="x" onclick="document.getElementById('display').value += '*'">
+
+            <input type="button" class="key fnkeys" value="RESET" style="grid-column: 1/span 2;" onclick="document.getElementById('display').value = ''">
+            <input type="button" class="key equal" value="=" onclick="document.getElementById('display').value = eval(document.getElementById('display').value)">
+        </div>
+    </div>
+</body>
+<script>
+    const themes = [
+    {
+        name: "theme1",
+        background:{
+            main: "hsl(222, 26%, 31%)",
+            toggle: "hsl(223, 31%, 20%)",
+            screen: "hsl(224, 36%, 15%)",
+        },
+        keys:{
+            default:{
+                background: "hsl(225, 21%, 49%)",
+                shadow: "hsl(224, 28%, 35%)",
+            },
+            red:{
+                background: "hsl(6, 63%, 50%)",
+                shadow: "hsl(6, 70%, 34%)",
+            },
+            orange:{
+                background: "hsl(30, 25%, 89%)",
+                shadow: "hsl(28, 16%, 65%)",
+            },
+        },
+        text:{
+            dark: "hsl(221, 14%, 31%)",
+            white: "hsl(0, 0%, 100%)",
+        }
+    },
+    {
+        name: "theme2",
+        background:{
+            main: "hsl(0, 0%, 90%)",
+            toggle: "hsl(0, 5%, 81%)",
+            screen: "hsl(0, 0%, 93%)",
+        },
+        keys:{
+            default:{
+                background: "hsl(185, 42%, 37%)",
+                shadow: "hsl(185, 58%, 25%)",
+            },
+            orange:{
+                background: "hsl(25, 98%, 40%)",
+                shadow: "hsl(25, 99%, 27%)",
+            },
+            yellow:{
+                background: "hsl(45, 7%, 89%)",
+                shadow: "hsl(35, 11%, 61%)",
+            },
+        },
+        text:{
+            dark: "hsl(60, 10%, 19%)",
+            white: "hsl(0, 0%, 100%)",
+        }
+    },
+    {
+        name: "theme3",
+        background:{
+            main: "hsl(268, 75%, 9%)",
+            toggle: "hsl(268, 71%, 12%)",
+        },
+        keys:{
+            default:{
+                background: "hsl(281, 89%, 26%)",
+                shadow: "hsl(285, 91%, 52%)",
+            },
+            cyan:{
+                background: "hsl(176, 100%, 44%)",
+                shadow: "hsl(177, 92%, 70%)",
+            },
+            dark:{
+                background: "hsl(268, 47%, 21%)",
+                shadow: "hsl(290, 70%, 36%)",
+            },
+        },
+        text:{
+            light: "hsl(52, 100%, 62%)",
+            very: "hsl(198, 20%, 13%)",
+            white: "hsl(0, 0%, 100%)",
+        }
+    }
+];
+function applyTheme(theme) {
+    document.body.style.backgroundColor = theme.background.main;
+    document.querySelector('.toggle').style.backgroundColor = theme.background.toggle;
+    document.querySelector('.screen').style.backgroundColor = theme.background.screen;
+
+    document.querySelectorAll('.key.default').forEach(key => {
+        key.style.backgroundColor = theme.keys.default.background;
+        key.style.boxShadow = `0 5px ${theme.keys.default.shadow}`;
+    });
+
+    document.querySelectorAll('.key.red').forEach(key => {
+        key.style.backgroundColor = theme.keys.red?.background;
+        key.style.boxShadow = `0 5px ${theme.keys.red?.shadow}`;
+    });
+    document.querySelectorAll('.key.orange').forEach(key => {
+        key.style.backgroundColor = theme.keys.orange?.background;
+        key.style.boxShadow = `0 5px ${theme.keys.orange?.shadow}`;
+    });
+
+    document.body.style.color = theme.text.white;
+}
+document.querySelectorAll('input[name="theme"]').forEach(input => {
+    input.addEventListener('change', function() {
+        const selectedTheme = themes.find(theme => theme.name === this.value);
+        if (selectedTheme) {
+            applyTheme(selectedTheme);
+        }
+    });
+});
+applyTheme(themes[0]);
+</script>
+</html>
