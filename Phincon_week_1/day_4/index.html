@@ -128,12 +128,32 @@
             <input type="button" class="key" value="/" onclick="document.getElementById('display').value += '/'">
             <input type="button" class="key" value="x" onclick="document.getElementById('display').value += '*'">
 
+            <input type="button" class="key" value="n!" style="grid-column: 1/span 4;" onclick="calcFact()">
+
             <input type="button" class="key fnkeys" value="RESET" style="grid-column: 1/span 2;" onclick="document.getElementById('display').value = ''">
             <input type="button" class="key equal" value="=" onclick="document.getElementById('display').value = eval(document.getElementById('display').value)">
+
+            
+
         </div>
     </div>
 </body>
 <script>
+function factorial(n) {
+    if (n == 0){
+        return 1;
+    }else{
+        return n * factorial(n-1);
+    }
+}
+function calcFact(){
+    let display = document.getElementById("display");
+    let value = parseInt(display.value);
+    if(!isNaN(value) && value >= 0){
+        display.value = factorial
+        (value)
+    }
+}
     const themes = [
     {
         name: "theme1",
