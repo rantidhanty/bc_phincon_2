@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Result</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Game Over</h1>
+        <p>Player 1 Score: <span id="player1Score"></span></p>
+        <p>Player 2 Score: <span id="player2Score"></span></p>
+        <p id="finalResult"></p>
+        <button onclick="location.href='index.html'">Play Again</button>
+    </div>
+
+    <script>
+        const player1Score = Number(localStorage.getItem('player1Score'));
+        const player2Score = Number(localStorage.getItem('player2Score'));
+
+        document.getElementById('player1Score').textContent = player1Score.toString();
+        document.getElementById('player2Score').textContent = player2Score.toString();
+
+        const finalResult = document.getElementById('finalResult');
+        if (player1Score > player2Score) {
+            finalResult.textContent = 'Player 1 Wins the Game!';
+        } else if (player2Score > player1Score) {
+            finalResult.textContent = 'Player 2 Wins the Game!';
+        } else {
+            finalResult.textContent = 'It\'s a tie!';
+        }
+    </script>
+</body>
+</html>

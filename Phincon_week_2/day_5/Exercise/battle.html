@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Battle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Round <span id="currentRound">1</span></h1>
+        <div class="choices">
+            <h2>Player 1, make your choice:</h2>
+            <button data-choice="rock">Rock</button>
+            <button data-choice="paper">Paper</button>
+            <button data-choice="scissors">Scissors</button>
+        </div>
+
+        <div class="choices">
+            <h2>Player 2, make your choice:</h2>
+            <button data-choice="rock">Rock</button>
+            <button data-choice="paper">Paper</button>
+            <button data-choice="scissors">Scissors</button>
+        </div>
+
+        <p id="roundResult"></p>
+        <button id="nextRound" disabled>Next Round</button>
+    </div>
+
+    <script src="scripts/battle.js"></script>
+</body>
+</html>

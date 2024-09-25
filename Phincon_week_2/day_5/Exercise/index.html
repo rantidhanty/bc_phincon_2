@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Start</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
+        <form id="roundsForm" action="battle.html">
+            <label for="rounds">Enter number of rounds:</label>
+            <input type="number" id="rounds" name="rounds" min="1" required>
+            <button type="submit">Start Game</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('roundsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const rounds = document.getElementById('rounds').value;
+            localStorage.setItem('rounds', rounds);
+            window.location.href = 'battle.html';
+        });
+    </script>
+</body>
+</html>
