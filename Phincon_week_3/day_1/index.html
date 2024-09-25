@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: hsl(0, 0%, 90%);
+            font-family: Arial, sans-serif;
+        }
+        .calc{
+            margin-bottom: -30px;
+            margin-left: -23%;
+            font-size: 30px;
+        }
+        .theme-switcher {
+            text-align: center;
+            margin-bottom: 10px;
+            margin-left: 300px;
+        }
+        .calculator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 300px;
+        }
+        .screen {
+            margin-bottom: 10px;
+        }
+        #display {
+            width: 100%;
+            padding: 15px;
+            font-size: 2rem;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            width: 28%;
+        }
+        .key {
+            padding: 10px;
+            font-size: 1.5rem;
+            border: none;
+            cursor: pointer;
+            background-color: hsl(225, 21%, 49%);
+            color: white;
+        }
+        .key:hover{
+            transform: scale(0.5.1);
+            background-color: #572c61;
+            box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+        }
+        .key.equal {
+            background-color: hsl(6, 63%, 50%);
+            box-shadow: 0 5px hsl(6, 70%, 34%);
+        }
+        .key.key.equal:hover{
+            transform: scale(0.5.1);
+            background-color: #572c61;
+            box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.3);
+        }
+        .key.fnkeys {
+            background-color: hsl(154, 42%, 43%);
+            box-shadow: 0 2px white
+        }
+        .keys .key.equal {
+            grid-column: span 2;
+        }
+        </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function Calculator() {
+            
+        return (
+            <>
+            <div className="calc">Calc</div>
+    <div className="theme-switcher">
+        <div>Theme</div>
+        <label>
+            <input type="radio" name="theme" value="theme1" onChange={changeTheme}/>
+            1
+        </label>
+        <label>
+            <input type="radio" name="theme" value="theme2" onChange={changeTheme}/>
+            2
+        </label>
+        <label>
+            <input type="radio" name="theme" value="theme3" onChange={changeTheme}/>
+            3
+        </label>
+    </div>
+    <div className="calculator"></div>
+        <div className="screen">
+            <form id="calcForm">
+                <input type="text" id="display" readOnly />
+            </form>
+        </div>
+        <div className="keys">
+            <input type="button" className="key" value="7" onClick={buttonClick} />
+            <input type="button" className="key" value="8"  />
+            <input type="button" className="key" value="9" onClick={buttonClick} />
+            <input type="button" className="key fnkeys" value="DEL" onClick={buttonClick} />
+
+            <input type="button" className="key" value="4" onClick={buttonClick} />
+            <input type="button" className="key" value="5" onClick={buttonClick} />
+            <input type="button" className="key" value="6" onClick={buttonClick} />
+            <input type="button" className="key" value="+" onClick={buttonClick} />
+
+            <input type="button" className="key" value="1" onClick={buttonClick}/>
+            <input type="button" className="key" value="2" onClick={buttonClick}/>
+            <input type="button" className="key" value="3" onClick={buttonClick}/>
+            <input type="button" className="key" value="-" onClick={buttonClick}/>
+
+            <input type="button" className="key" value="." onClick={buttonClick}/>
+            <input type="button" className="key" value="0" onClick={buttonClick}/>
+            <input type="button" className="key" value="/" onClick={buttonClick}/>
+            <input type="button" className="key" value="x" onClick={buttonClick} />
+
+            <input type="button" className="key" value="n!" style={{gridColumn: "1/span 4"}} onClick={buttonClick} />
+
+            <input type="button" className="key fnkeys" value="RESET" style={{gridColumn: "1/span 2"}} onClick={buttonClick} />
+            <input type="button" className="key equal" value="=" onClick={buttonClick} />
+        </div>
+            </>
+            );
+        }
+        ReactDOM.createRoot(document.getElementById('root')).render(<Calculator />);
+    </script>
+</body>
+</html>
