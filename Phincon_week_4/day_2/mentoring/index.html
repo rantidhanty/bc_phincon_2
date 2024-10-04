@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoring</title>
+</head>
+<body>
+<div id="section">
+
+</div>
+<div id="container">
+    Phincon Academy
+</div>
+    <script>
+        function ctn(ctn2){
+            // document.getElementById(ctn2).style.color = "red";
+            // document.getElementById(ctn2).style.backgroundColor = "yellow";
+            // document.getElementById(ctn2).style.fontWeight = "bold";
+            // document.getElementById(ctn2).style.fontSize = "25px";
+            // const para = document.createElement("p")
+            // para.style.color = "green";
+            // para.textContent = "paragraf";
+            // document.getElementById("container").append(para);
+            const sct = document.getElementById(ctn2);
+            sct.style.color = "blue";
+            sct.textContent = "fullstack javascript"
+        }
+        ctn("section")
+
+        function element(newElement){
+            const elmn = document.createElement(newElement);
+            // document.getElementById("container").append(elmn);
+            elmn.textContent = "selamat malam";
+            elmn.style.color = "green";
+                if(newElement === "p"){
+                    document.getElementById("container").append(elmn);
+                } else if(newElement !== "p"){
+                    return;
+                }
+            return elmn;
+        }
+        element("span")
+
+        const arr = () => {
+            const array = [1, 2, 3, 4, 5]
+            // const angka = array.filter((num => num % 2 === 0))
+            // return angka;
+            // for(let i = 0; i < array.length; i++){
+            //     if(array[i] % 2 === 0){
+            //         console.log(array[i]);
+            //     }
+            // }
+            // array.forEach((element) => console.log(element))
+            array.forEach(num => {
+                if(num % 2 === 0){
+                    console.log(num)
+                }
+            })
+        }
+        arr()
+    </script>
+</body>
+</html>

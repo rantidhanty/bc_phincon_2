@@ -1,0 +1,21 @@
+{
+    "phincon academy": {
+        "bootcamps": [
+            {
+                "name": "fullstack Javascript",
+                "code": "FSJS",
+                "students": ["Danty", "Rifqy", "David"]
+            },
+            {
+                "name": "Android Developer",
+                "code": "AD",
+                "students": ["hansen", "andi"]
+            },
+            {
+                "name": "IOS Developer",
+                "code": "ID",
+                "students": ["irfan"]
+            }
+        ]
+    }
+}
