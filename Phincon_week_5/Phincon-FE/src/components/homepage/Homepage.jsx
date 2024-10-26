@@ -3,15 +3,20 @@ import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import Cookies from "js-cookie";
 import Header from "../header/Header";
+import { useDispatch, useSelector } from "react-redux";
+import { getCookie } from "../../utils/feature/cookie/cookieSlice";
 
 const Homepage = () => {
-  const navigate = useNavigate();
+  const { value } = useSelector((state) => state.cookie);
+  const dispatch = useDispatch();
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   dispatch({ type: "cookie/getCookie" });
+  //   console.log(value);
+  // }, [dispatch, value]);
   useEffect(() => {
-    const user = Cookies.get("user");
-    if (!user) {
-      navigate("/login");
-    }
-  });
+    dispatch({ type: "cookie/getCookie" });
+  }, []);
 
   return (
     <>

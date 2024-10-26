@@ -11,6 +11,16 @@ async function fetchData() {
   return await response.json();
 }
 
+async function postProduct() {
+  const response = await fetch(`${API_URL}/product`, {
+    method: "POST",
+  });
+  if (!response.ok) {
+    throw new Error("Failed to fetch data");
+  }
+  return await response.json();
+}
+
 function* fetchAPI() {
   try {
     const response = yield fetchData();
@@ -20,6 +30,16 @@ function* fetchAPI() {
   }
 }
 
+function* POSTProductsAPI() {
+  try {
+    const response = yield postProduct();
+    yield put(fetchSuccess(response));
+  } catch (error) {
+    yield put(fetchFailure(error.message));
+  }
+}
+
 export default function* inventorySaga() {
   yield takeLatest(fetchRequest.type, fetchAPI);
+  yield takeLatest("FETCH PRODUCTS", POSTProductsAPI);
 }

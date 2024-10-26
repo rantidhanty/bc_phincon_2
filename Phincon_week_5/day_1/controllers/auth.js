@@ -24,7 +24,7 @@ const registerUser = async (req, res) => {
     const verificationToken = generateToken(
       newUser.us_id,
       newUser.us_email,
-      "VERIFICATION",
+      name,
       "1h"
     );
     const emailTemplateSource = fs.readFileSync(
